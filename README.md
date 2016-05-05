@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * Quick summary
-This is a web application named **TodoApp**** used to create and finish daily tasks/todos. To build this application we have used MEAN (MariaDB/MySQL, Express, Angular, Node) stack.
+This is a web application named ***TodoApp*** used to create and finish daily tasks/todos. To build this application we have used MEAN (MariaDB/MySQL, Express, Angular, Node) stack.
 1. Storing todos in a MariaDB using MySQL
 2. Using the Express framework
 3. Creating a RESTful Node API
@@ -29,7 +29,7 @@ This is a web application named **TodoApp**** used to create and finish daily ta
 
 * Configuration
 **Node Configuration** 
-In our **package.json**** file, we told it that our main file would be server.js. This is the main file for our Node app and where we will configure the entire application.
+In our ***package.json*** file, we told it that our main file would be server.js. This is the main file for our Node app and where we will configure the entire application.
 * This is the file where we will:
   1. Configure our application
   2. Connect to our database
