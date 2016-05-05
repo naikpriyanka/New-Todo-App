@@ -1,0 +1,64 @@
+<!-- app.html -->
+<div style="height:100%;">
+	<header id="content-header">
+		<div style="display:inline-block;">
+			<p>Tasks <span class="label label-info">{{ todos.length }}</span></p>	
+		</div>
+		<!-- FORM TO CREATE TODOS -->
+		<div style="display:inline-block;margin-top:-.25em" class="pull-right">
+            <form>
+                <div class="form-group">
+
+                	<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+            		<div style="display:inline-block;">
+                        <input type="text" class="form-control input-sm text-center" placeholder="Add your todo" ng-model="formData.text">
+                    </div>
+                    				
+                	<div class="form-group has-feedback" style="display:inline-block;z-index:1;margin-right:20px;" ng-cloak="" class="datepickerdemoBasicUsage">
+	                 	<md-datepicker ng-model="formData.endDate" md-placeholder="Choose end date" md-min-date="minDate" />
+<!--                     	<input type="text" class="form-control input-sm text-center datepicker" ng-model="formData.endDate" placeholder="Choose end date" mydatepicker/> -->
+<!--                     	<i class="glyphicon glyphicon-calendar form-control-feedback" style="margin-top:1em;margin-right:-1em"></i> -->
+					</div>
+						
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<div style="display:inline-block;">
+						<button type="submit" class="btn btn-success btn-sm btn-icon" id="new-task" ng-click="createTodo()">
+							<i class="fa fa-plus"></i>
+						</button>
+                    </div>
+                </div>       
+            </form>
+		</div>		
+	</header>
+	<section style="width:100%;height:77%;">
+		<div style="width:100%;height:12%;">
+			<div class="form-group has-feedback" ng-show="todos.length" style="position:absolute;width:50%;margin:20px;">
+				<input type="text" class="form-control input-md text-center" ng-model="title">
+				<i class="glyphicon glyphicon-search form-control-feedback"></i>
+			</div>
+		</div>	
+		<div style="width:100%;height:97%;overflow-y:scroll;">	
+			<div style="width:88%;margin-top:15px;margin-left:30px;">
+				<ul id="todo-list" class="list-group list-group-sp" ng-repeat="todo in todos | filter:title | orderBy: 'endDate'" ng-class="{ 'red': isGone(todo.endDate, todo.done) }" >
+					<li class="list-group-item">
+						<span style="margin-right:20px;">
+							<input type="checkbox" name="done" id="{{ todo.id }}" ng-model="isdone" ng-init="isdone=todo.done === 1 ? true : false" ng-click="updateTodo($event, todo.id)" />
+						</span>
+						<span class="todo-name" ng-class="{ 'done-{{todo.done}}': isdone }">
+							{{ todo.text }}
+						</span>
+						<button class="delete-button pull-right" ng-click="deleteTodo(todo.id)">
+    						<span class="glyphicon glyphicon-remove"></span>
+  						</button>
+					</li>
+				</ul>
+			</div>
+			<div ng-show="!todos.length" style="text-align:center;font-size:40px;">No Todos</div>
+		</div>
+	</section>
+	<footer id="content-footer">
+		<p class="checkbox">
+			<label><input id="toggle-all" type="checkbox" ng-click="updateAllTodos($event)"> Mark all as complete</label>
+		</p>
+	</footer>
+</div>
